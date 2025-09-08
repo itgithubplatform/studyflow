@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-plus-circle me-2"></i>Add New Task
+                    </h4>
+                </div>
+                
+                <div class="card-body p-4">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                {{ form.title.label(class="form-label fw-semibold") }}
+                                {{ form.title(class="form-control form-control-lg") }}
+                                {% if form.title.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.title.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                {{ form.subject.label(class="form-label fw-semibold") }}
+                                {{ form.subject(class="form-control") }}
+                                {% if form.subject.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.subject.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label fw-semibold") }}
+                            {{ form.description(class="form-control", rows="3") }}
+                            <div class="form-text">Provide additional details about the task (optional)</div>
+                            {% if form.description.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.description.errors %}
+                                        <div>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                {{ form.priority.label(class="form-label fw-semibold") }}
+                                {{ form.priority(class="form-select") }}
+                                {% if form.priority.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.priority.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                {{ form.difficulty.label(class="form-label fw-semibold") }}
+                                {{ form.difficulty(class="form-range", min="1", max="5", oninput="updateDifficultyLabel(this.value)") }}
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">Easy</small>
+                                    <small id="difficulty-label" class="fw-semibold">Medium</small>
+                                    <small class="text-muted">Hard</small>
+                                </div>
+                                {% if form.difficulty.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.difficulty.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                {{ form.estimated_hours.label(class="form-label fw-semibold") }}
+                                {{ form.estimated_hours(class="form-control", step="0.5") }}
+                                <div class="form-text">Hours needed</div>
+                                {% if form.estimated_hours.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.estimated_hours.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="col-md-3 mb-3">
+                                {{ form.due_date.label(class="form-label fw-semibold") }}
+                                {{ form.due_date(class="form-control") }}
+                                {% if form.due_date.errors %}
+                                    <div class="text-danger small mt-1">
+                                        {% for error in form.due_date.errors %}
+                                            <div>{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            {{ form.category.label(class="form-label fw-semibold") }}
+                            {{ form.category(class="form-select") }}
+                            {% if form.category.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.category.errors %}
+                                        <div>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('tasks.index') }}" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-2"></i>Back to Tasks
+                            </a>
+                            {{ form.submit(class="btn btn-primary btn-lg px-4") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateDifficultyLabel(value) {
+    const labels = ['', 'Very Easy', 'Easy', 'Medium', 'Hard', 'Very Hard'];
+    document.getElementById('difficulty-label').textContent = labels[value];
+}
+
+// Set default due date to today
+document.addEventListener('DOMContentLoaded', function() {
+    const dueDateField = document.getElementById('due_date');
+    if (!dueDateField.value) {
+        dueDateField.value = new Date().toISOString().split('T')[0];
+    }
+    
+    // Initialize difficulty label
+    const difficultyField = document.getElementById('difficulty');
+    updateDifficultyLabel(difficultyField.value);
+});
+</script>
+{% endblock %}

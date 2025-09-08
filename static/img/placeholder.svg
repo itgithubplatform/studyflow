@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="studyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="400" height="300" fill="url(#studyGrad)" rx="15"/>
+    
+    <!-- StudyFlow Logo -->
+    <g transform="translate(200, 150)">
+        <!-- Graduation Cap -->
+        <rect x="-40" y="-10" width="80" height="8" fill="white" rx="2"/>
+        <polygon points="-50,-10 0,-25 50,-10" fill="white"/>
+        <rect x="-2" y="-2" width="4" height="20" fill="white"/>
+        <circle cx="2" cy="18" r="3" fill="white"/>
+        
+        <!-- Books -->
+        <rect x="-60" y="10" width="15" height="20" fill="#ffc107" rx="2"/>
+        <rect x="-40" y="15" width="15" height="15" fill="#198754" rx="2"/>
+        <rect x="-20" y="12" width="15" height="18" fill="#dc3545" rx="2"/>
+        
+        <!-- Text -->
+        <text x="0" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">StudyFlow</text>
+        <text x="0" y="70" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.8)">Smart Student Productivity</text>
+    </g>
+    
+    <!-- Decorative Elements -->
+    <circle cx="50" cy="50" r="20" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="350" cy="250" r="30" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="350" cy="50" r="15" fill="rgba(255,255,255,0.1)"/>
+    <circle cx="50" cy="250" r="25" fill="rgba(255,255,255,0.1)"/>
+</svg>

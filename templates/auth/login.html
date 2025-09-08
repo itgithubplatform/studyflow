@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+    }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 20px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        transform: translateY(-2px);
+    }
+    .btn-login {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        color: white;
+    }
+    .demo-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        color: white;
+    }
+</style>
+
+<div class="container-fluid vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6">
+                <div class="glass-card p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-white mb-2">
+                            <i class="bi bi-mortarboard-fill me-2"></i>Welcome Back to StudyFlow
+                        </h2>
+                        <p class="text-white-50">Sign in to continue your learning journey</p>
+                    </div>
+                    
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="mb-3">
+                            {{ form.username.label(class="form-label fw-semibold text-white") }}
+                            {{ form.username(class="form-control", placeholder="Enter your username") }}
+                            {% if form.username.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.username.errors %}
+                                        <div><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.password.label(class="form-label fw-semibold text-white") }}
+                            <div class="input-group">
+                                {{ form.password(class="form-control", id="password", placeholder="Enter your password") }}
+                                <button class="btn btn-outline-light" type="button" onclick="togglePassword()">
+                                    <i class="bi bi-eye" id="password-icon"></i>
+                                </button>
+                            </div>
+                            {% if form.password.errors %}
+                                <div class="text-danger small mt-1">
+                                    {% for error in form.password.errors %}
+                                        <div><i class="bi bi-exclamation-circle me-1"></i>{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="form-check">
+                                {{ form.remember_me(class="form-check-input") }}
+                                {{ form.remember_me.label(class="form-check-label text-white") }}
+                            </div>
+                            <a href="#" class="text-white-50 text-decoration-none small">Forgot Password?</a>
+                        </div>
+                        
+                        <div class="d-grid mb-4">
+                            {{ form.submit(class="btn btn-login btn-lg") }}
+                        </div>
+                    </form>
+                    
+                    <div class="text-center">
+                        <p class="text-white-50 mb-3">Don't have an account?</p>
+                        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light">
+                            <i class="bi bi-person-plus me-2"></i>Create New Account
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Demo Account Card -->
+                <div class="demo-card mt-4 p-3 text-center">
+                    <h6 class="mb-2"><i class="bi bi-info-circle me-2"></i>Try Demo Account</h6>
+                    <p class="mb-2 small opacity-75">Username: <code>demo</code> | Password: <code>demo123</code></p>
+                    <button class="btn btn-success btn-sm" onclick="fillDemoCredentials()">
+                        <i class="bi bi-play-fill me-1"></i>Use Demo Account
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    const passwordField = document.getElementById('password');
+    const passwordIcon = document.getElementById('password-icon');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordIcon.className = 'bi bi-eye-slash';
+    } else {
+        passwordField.type = 'password';
+        passwordIcon.className = 'bi bi-eye';
+    }
+}
+
+function fillDemoCredentials() {
+    document.getElementById('username').value = 'demo';
+    document.getElementById('password').value = 'demo123';
+    
+    // Visual feedback
+    const btn = event.target;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="bi bi-check-circle me-1"></i>Credentials Filled!';
+    btn.classList.remove('btn-success');
+    btn.classList.add('btn-info');
+    
+    setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('btn-info');
+        btn.classList.add('btn-success');
+    }, 2000);
+}
+</script>
+{% endblock %}

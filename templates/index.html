@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section text-white py-5 mb-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="bi bi-mortarboard-fill text-warning me-3"></i>
+                    Welcome to StudyFlow
+                </h1>
+                <p class="lead mb-4">
+                    The ultimate productivity tracker designed specifically for students. 
+                    Manage tasks, track study sessions, and boost your academic performance with gamification.
+                </p>
+                <div class="d-grid gap-2 d-md-flex">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-warning btn-lg px-4 me-md-2">
+                        <i class="bi bi-person-plus me-2"></i>Get Started Free
+                    </a>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <div class="hero-image">
+                    <i class="bi bi-graph-up-arrow display-1 text-warning opacity-75"></i>
+                    <i class="bi bi-list-check display-1 text-info opacity-75 ms-3"></i>
+                    <i class="bi bi-trophy display-1 text-success opacity-75 ms-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row text-center mb-5">
+        <div class="col-12">
+            <h2 class="display-5 fw-bold mb-3">Why Choose StudyFlow?</h2>
+            <p class="lead text-muted">Comprehensive tools to transform your study habits</p>
+        </div>
+    </div>
+    
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-primary text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-list-task display-6"></i>
+                    </div>
+                    <h4 class="card-title">Smart Task Management</h4>
+                    <p class="card-text text-muted">
+                        Organize assignments, set priorities, track deadlines, and never miss important due dates again.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-success text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-stopwatch display-6"></i>
+                    </div>
+                    <h4 class="card-title">Pomodoro Timer</h4>
+                    <p class="card-text text-muted">
+                        Built-in Pomodoro technique with customizable work/break intervals to maximize focus and productivity.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-info text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-graph-up display-6"></i>
+                    </div>
+                    <h4 class="card-title">Detailed Analytics</h4>
+                    <p class="card-text text-muted">
+                        Visualize your progress with charts, track study patterns, and identify areas for improvement.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-warning text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-trophy display-6"></i>
+                    </div>
+                    <h4 class="card-title">Gamification System</h4>
+                    <p class="card-text text-muted">
+                        Earn points, unlock achievements, level up, and compete with friends on the leaderboard.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-danger text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-robot display-6"></i>
+                    </div>
+                    <h4 class="card-title">AI Study Coach</h4>
+                    <p class="card-text text-muted">
+                        Get personalized study recommendations based on your habits and performance patterns.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon bg-secondary text-white rounded-circle mx-auto mb-3" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-envelope display-6"></i>
+                    </div>
+                    <h4 class="card-title">Smart Notifications</h4>
+                    <p class="card-text text-muted">
+                        Receive email reminders for upcoming deadlines and weekly progress summaries.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row text-center">
+        <div class="col-12">
+            <div class="cta-section text-white rounded-3 p-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <h3 class="fw-bold mb-3">Ready to Transform Your Study Habits?</h3>
+                <p class="lead mb-4">Join StudyFlow today and start your journey to academic excellence!</p>
+                <a href="{{ url_for('auth.register') }}" class="btn btn-warning btn-lg px-5">
+                    <i class="bi bi-rocket-takeoff me-2"></i>Start Your Free Account
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+</style>
+{% endblock %}
