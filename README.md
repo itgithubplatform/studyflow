@@ -347,7 +347,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Documentation**: [Wiki](https://github.com/yourusername/studyflow/wiki)
 - **Issues**: [GitHub Issues](https://github.com/yourusername/studyflow/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/yourusername/studyflow/discussions)
-- **Email**: support@studyflow.com
+- **Email**: benugopal2005@gmail.com
 
 ---
 
